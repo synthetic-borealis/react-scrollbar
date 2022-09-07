@@ -150,7 +150,13 @@ function ScrollBarArea({ children }: IScrollBarAreaProps) {
   });
 
   return (
-    <div className="scroll-bar-area" onWheel={handleWheel}>
+    <div
+      className="scroll-bar-area"
+      onWheel={handleWheel}
+      onPointerLeave={handleThumbPointerUp}
+      onPointerMove={handleThumbPointerMove}
+      onPointerUp={handleThumbPointerUp}
+    >
       <div className="scroll-bar-area__content" ref={contentRef}>
         {children}
       </div>
@@ -164,9 +170,6 @@ function ScrollBarArea({ children }: IScrollBarAreaProps) {
         <div
           className="scroll-bar-area__scrollbar-thumb"
           onPointerDown={handleThumbPointerDown}
-          onPointerUp={handleThumbPointerUp}
-          onPointerLeave={handleThumbPointerUp}
-          onPointerMove={handleThumbPointerMove}
           ref={scrollThumbRef}
           style={{
             height: thumbHeight,
