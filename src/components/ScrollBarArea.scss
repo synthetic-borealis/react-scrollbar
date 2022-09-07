@@ -1,0 +1,61 @@
+.scroll-bar-area {
+  position: relative;
+  display: grid;
+  grid-template: auto / 1fr auto;
+  gap: 0.5rem;
+  width: 60%;
+  height: 60%;
+  background-color: #fafafe;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 0.25rem;
+  overflow: hidden;
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: auto;
+
+    & p {
+      margin: 0 auto 1rem;
+    }
+
+    & p:last-of-type {
+      margin: 0 auto;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__scrollbar {
+    position: relative;
+    border-radius: 10px;
+    display: grid;
+    height: 100%;
+    width: 1rem;
+
+    &-track {
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      width: 100%;
+      background-color: lightgrey;
+      border-radius: 10px;
+      cursor: pointer;
+      outline: 1px solid darkgrey;
+    }
+
+    &-thumb {
+      position: absolute;
+      width: 100%;
+      border-radius: 10px;
+      background-color: darkcyan;
+      outline: 1px solid darkgreen;
+    }
+  }
+}

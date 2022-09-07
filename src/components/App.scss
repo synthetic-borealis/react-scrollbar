@@ -1,0 +1,17 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 3rem;
+  background-color: lightblue;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+
+  &__title {
+    margin: 0 auto 2rem;
+    padding: 0;
+  }
+}
