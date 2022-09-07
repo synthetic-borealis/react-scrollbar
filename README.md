@@ -1,19 +1,5 @@
-# Vite React Template
+# Custom scrollbar component for React
 
-## Usage:
-
-```bash
-$ yarn # or npm install
-```
-
-See `package.json` for a list of available scripts.
-
-## Packages included:
-
-- Vite
-- React
-- TypeScript
-- Jest
-- ESlint
-- Prettier
-- Sass
+Based on a method from
+a [blog post](https://www.thisdot.co/blog/creating-custom-scrollbars-with-react) written by Tom
+VanAntwerp.
