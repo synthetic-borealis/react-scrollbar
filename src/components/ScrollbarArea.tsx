@@ -114,9 +114,9 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
 
   const handleThumbPointerMove = useCallback(
     (evt: React.PointerEvent<HTMLDivElement>) => {
-      evt.preventDefault();
-      evt.stopPropagation();
       if (isDragging && contentRef.current) {
+        evt.preventDefault();
+        evt.stopPropagation();
         const {
           scrollHeight: contentScrollHeight,
           offsetHeight: contentOffsetHeight,
