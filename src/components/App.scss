@@ -1,4 +1,4 @@
-.app {
+.App {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -13,5 +13,13 @@
   &__title {
     margin: 0 auto 2rem;
     padding: 0;
+  }
+
+  &__paragraph {
+    margin: 0 auto 1rem;
+
+    &:last-of-type {
+      margin: 0 auto;
+    }
   }
 }

@@ -151,24 +151,24 @@ function ScrollBarArea({ children }: IScrollBarAreaProps) {
 
   return (
     <div
-      className="scroll-bar-area"
+      className="ScrollBarArea"
       onWheel={handleWheel}
       onPointerLeave={handleThumbPointerUp}
       onPointerMove={handleThumbPointerMove}
       onPointerUp={handleThumbPointerUp}
     >
-      <div className="scroll-bar-area__content" ref={contentRef}>
+      <div className="ScrollBarArea__content" ref={contentRef}>
         {children}
       </div>
-      <div className="scroll-bar-area__scrollbar">
+      <div className="ScrollBarArea__scrollbar">
         <div
-          className="scroll-bar-area__scrollbar-track"
+          className="ScrollBarArea__scrollbar-track"
           ref={scrollTrackRef}
           onClick={handleTrackClick}
           role="none"
         />
         <div
-          className="scroll-bar-area__scrollbar-thumb"
+          className="ScrollBarArea__scrollbar-thumb"
           onPointerDown={handleThumbPointerDown}
           ref={scrollThumbRef}
           style={{
