@@ -6,7 +6,7 @@ interface IScrollbarAreaProps {
   children?: ReactNode;
 }
 
-function ScrollbarArea({ children }: IScrollbarAreaProps) {
+export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const scrollTrackRef = useRef<HTMLDivElement>(null);
   const scrollThumbRef = useRef<HTMLDivElement>(null);
@@ -186,5 +186,3 @@ function ScrollbarArea({ children }: IScrollbarAreaProps) {
 ScrollbarArea.defaultProps = {
   children: PropTypes.node,
 };
-
-export default ScrollbarArea;
