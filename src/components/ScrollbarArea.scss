@@ -24,6 +24,10 @@
     flex-direction: column;
     border-radius: 10px;
     overflow: auto;
+    -ms-overflow-style: none;
+
+    // Only supported by Mozilla browsers at the moment
+    scrollbar-width: 0;
 
     &::-webkit-scrollbar {
       display: none;

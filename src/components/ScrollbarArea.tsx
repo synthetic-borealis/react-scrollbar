@@ -2,11 +2,11 @@ import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'reac
 import PropTypes from 'prop-types';
 import './ScrollbarArea.scss';
 
-interface IScrollBarAreaProps {
+interface IScrollbarAreaProps {
   children?: ReactNode;
 }
 
-function ScrollbarArea({ children }: IScrollBarAreaProps) {
+function ScrollbarArea({ children }: IScrollbarAreaProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const scrollTrackRef = useRef<HTMLDivElement>(null);
   const scrollThumbRef = useRef<HTMLDivElement>(null);
