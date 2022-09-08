@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 
-import ScrollBarArea from './ScrollBarArea';
+import ScrollbarArea from './ScrollbarArea';
 
 function App() {
   const kittyIpsumContent = (
@@ -168,11 +168,11 @@ function App() {
   return (
     <div className="App">
       <h1 className="App__title">
-        ScrollBar Area Component
+        Scrollbar Area Component (React.js)
       </h1>
-      <ScrollBarArea>
+      <ScrollbarArea>
         {kittyIpsumContent}
-      </ScrollBarArea>
+      </ScrollbarArea>
     </div>
   );
 }

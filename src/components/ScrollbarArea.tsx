@@ -1,12 +1,12 @@
 import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import './ScrollBarArea.scss';
+import './ScrollbarArea.scss';
 
 interface IScrollBarAreaProps {
   children?: ReactNode;
 }
 
-function ScrollBarArea({ children }: IScrollBarAreaProps) {
+function ScrollbarArea({ children }: IScrollBarAreaProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const scrollTrackRef = useRef<HTMLDivElement>(null);
   const scrollThumbRef = useRef<HTMLDivElement>(null);
@@ -151,24 +151,26 @@ function ScrollBarArea({ children }: IScrollBarAreaProps) {
 
   return (
     <div
-      className="ScrollBarArea"
+      className="ScrollbarArea"
       onWheel={handleWheel}
       onPointerLeave={handleThumbPointerUp}
       onPointerMove={handleThumbPointerMove}
       onPointerUp={handleThumbPointerUp}
     >
-      <div className="ScrollBarArea__content" ref={contentRef}>
-        {children}
+      <div className="ScrollbarArea__wrapper">
+        <div className="ScrollbarArea__content" ref={contentRef}>
+          {children}
+        </div>
       </div>
-      <div className="ScrollBarArea__scrollbar">
+      <div className="ScrollbarArea__scrollbar">
         <div
-          className="ScrollBarArea__scrollbar-track"
+          className="ScrollbarArea__scrollbar-track"
           ref={scrollTrackRef}
           onClick={handleTrackClick}
           role="none"
         />
         <div
-          className="ScrollBarArea__scrollbar-thumb"
+          className="ScrollbarArea__scrollbar-thumb"
           onPointerDown={handleThumbPointerDown}
           ref={scrollThumbRef}
           style={{
@@ -181,8 +183,8 @@ function ScrollBarArea({ children }: IScrollBarAreaProps) {
   );
 }
 
-ScrollBarArea.defaultProps = {
+ScrollbarArea.defaultProps = {
   children: PropTypes.node,
 };
 
-export default ScrollBarArea;
+export default ScrollbarArea;
