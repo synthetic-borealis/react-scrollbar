@@ -99,7 +99,7 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
     []
   );
 
-  const handleThumbPointerUp = useCallback(
+  const handleThumbPointerUpOrLeave = useCallback(
     (evt: React.PointerEvent<HTMLDivElement>) => {
       if (!(evt.pointerType === 'mouse' && evt.button !== 0) || evt.type === 'pointerleave') {
         evt.preventDefault();
@@ -139,10 +139,8 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
         handleResize(ref, trackSize);
       });
       observer.current?.observe(ref);
-      ref.addEventListener('scroll', handleThumbPosition);
       return () => {
         observer.current?.unobserve(ref);
-        ref.removeEventListener('scroll', handleThumbPosition);
       };
     }
     return () => {
@@ -153,12 +151,12 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
     <div
       className="ScrollbarArea"
       onWheel={handleWheel}
-      onPointerLeave={handleThumbPointerUp}
+      onPointerLeave={handleThumbPointerUpOrLeave}
       onPointerMove={handleThumbPointerMove}
-      onPointerUp={handleThumbPointerUp}
+      onPointerUp={handleThumbPointerUpOrLeave}
     >
       <div className="ScrollbarArea__wrapper">
-        <div className="ScrollbarArea__content" ref={contentRef}>
+        <div className="ScrollbarArea__content" ref={contentRef} onScroll={handleThumbPosition}>
           {children}
         </div>
       </div>
