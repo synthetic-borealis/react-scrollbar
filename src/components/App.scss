@@ -15,11 +15,23 @@
     padding: 0;
   }
 
-  &__paragraph {
+  &__paragraphs {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__paragraphs-item {
     margin: 0 auto 1rem;
 
     &:last-of-type {
       margin: 0 auto;
     }
+  }
+
+  &__paragraph {
+    margin: 0;
   }
 }

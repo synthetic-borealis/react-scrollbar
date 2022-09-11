@@ -1,5 +1,6 @@
 import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
 import './ScrollbarArea.scss';
 
 interface IScrollbarAreaProps {
@@ -15,6 +16,8 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [scrollStartPosition, setScrollStartPosition] = useState<number>(0);
   const [initialScrollTop, setInitialScrollTop] = useState<number>(0);
+  const [viewportID] = useState<string>(nanoid());
+  const [scrollPosition, setScrollPosition] = useState<number>(0);
 
   function handleResize(ref: HTMLDivElement, trackSize: number) {
     const { clientHeight, scrollHeight } = ref;
@@ -52,6 +55,8 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
         trackHeight - thumbHeight,
       );
       const thumb = scrollThumbRef.current;
+      const newThumbPosition = thumb.offsetTop / Math.floor(trackHeight - thumbHeight) * 100;
+      setScrollPosition(newThumbPosition);
 
       thumb.style.top = `${newTop}px`;
     },
@@ -156,11 +161,23 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
       onPointerUp={handleThumbPointerUpOrLeave}
     >
       <div className="ScrollbarArea__wrapper">
-        <div className="ScrollbarArea__content" ref={contentRef} onScroll={handleThumbPosition}>
+        <div
+          className="ScrollbarArea__viewport"
+          ref={contentRef}
+          role="document"
+          id={viewportID}
+          onScroll={handleThumbPosition}
+        >
           {children}
         </div>
       </div>
-      <div className="ScrollbarArea__scrollbar">
+      <div
+        className="ScrollbarArea__scrollbar"
+        role="scrollbar"
+        aria-controls={viewportID}
+        aria-valuenow={scrollPosition}
+        aria-orientation="vertical"
+      >
         <div
           className="ScrollbarArea__scrollbar-track"
           ref={scrollTrackRef}
