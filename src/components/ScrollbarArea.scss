@@ -27,7 +27,7 @@
     -ms-overflow-style: none;
 
     // Only supported by Mozilla browsers at the moment
-    scrollbar-width: 0;
+    scrollbar-width: none;
 
     &::-webkit-scrollbar {
       display: none;
