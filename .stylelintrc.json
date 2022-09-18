@@ -1,6 +1,0 @@
-{
-  "extends": [
-    "stylelint-config-standard-scss",
-    "@up-line/stylelint-bem-ruleset"
-  ]
-}

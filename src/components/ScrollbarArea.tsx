@@ -1,4 +1,10 @@
-import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import './ScrollbarArea.scss';
@@ -37,9 +43,9 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
   const handleThumbPosition = useCallback(
     () => {
       if (
-        !contentRef.current ||
-        !scrollTrackRef.current ||
-        !scrollThumbRef.current
+        !contentRef.current
+        || !scrollTrackRef.current
+        || !scrollThumbRef.current
       ) {
         return;
       }
@@ -55,12 +61,12 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
         trackHeight - thumbHeight,
       );
       const thumb = scrollThumbRef.current;
-      const newThumbPosition = thumb.offsetTop / Math.floor(trackHeight - thumbHeight) * 100;
+      const newThumbPosition = (thumb.offsetTop / Math.floor(trackHeight - thumbHeight)) * 100;
       setScrollPosition(newThumbPosition);
 
       thumb.style.top = `${newTop}px`;
     },
-    [thumbHeight]
+    [thumbHeight],
   );
 
   const handleTrackClick = useCallback(
@@ -69,7 +75,7 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
       evt.stopPropagation();
       const [
         { current: trackCurrent },
-        { current: contentCurrent }
+        { current: contentCurrent },
       ] = [scrollTrackRef, contentRef];
 
       if (trackCurrent && contentCurrent) {
@@ -86,7 +92,7 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
         });
       }
     },
-    [thumbHeight]
+    [thumbHeight],
   );
 
   const handleThumbPointerDown = useCallback(
@@ -101,7 +107,7 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
         setIsDragging(true);
       }
     },
-    []
+    [],
   );
 
   const handleThumbPointerUpOrLeave = useCallback(
@@ -114,7 +120,7 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
         }
       }
     },
-    [isDragging]
+    [isDragging],
   );
 
   const handleThumbPointerMove = useCallback(
@@ -129,11 +135,11 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
         const deltaY = (evt.clientY - scrollStartPosition) * (contentOffsetHeight / thumbHeight);
         contentRef.current.scrollTop = Math.min(
           initialScrollTop + deltaY,
-          contentScrollHeight - contentOffsetHeight
+          contentScrollHeight - contentOffsetHeight,
         );
       }
     },
-    [isDragging, scrollStartPosition, thumbHeight, initialScrollTop]
+    [isDragging, scrollStartPosition, thumbHeight, initialScrollTop],
   );
 
   useEffect(() => {
@@ -190,7 +196,7 @@ export default function ScrollbarArea({ children }: IScrollbarAreaProps) {
           ref={scrollThumbRef}
           style={{
             height: thumbHeight,
-            cursor: isDragging ? 'grabbing' : 'grab'
+            cursor: isDragging ? 'grabbing' : 'grab',
           }}
         />
       </div>
